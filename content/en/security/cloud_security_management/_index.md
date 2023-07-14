@@ -48,9 +48,7 @@ CSM includes:
 
 ## Track your organization's health
 
-via the posture and health identity score
-
-Use the posture score to...
+Use the posture and health identity scores to track your organization's health.
 
 For CSM Identities, the health identity score...
 
@@ -58,11 +56,15 @@ For CSM Identities, the health identity score...
 
 ## Prioritize and remediate important security issues
 
-Use the **Security Inbox** to 
-
-security issues.
+Use the **Security Inbox** to prioritize security issues to fix.
 
 Remediate security issues by fixing the underlying issues or by muting the issue.
+
+When you remediate an issue, the
+
+mute to remove from the score calculation.
+
+Publicly Accessible/Is Privileged/Has Privileged Role/Is In Production flags/attributes
 
 {{< img src="security/csm/security-inbox.png" alt="The security inbox on the CSM overview shows prioritized issues for remediation" width="100%">}}
 
