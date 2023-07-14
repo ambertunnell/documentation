@@ -35,22 +35,44 @@ further_reading:
 
 Datadog Cloud Security Management (CSM) delivers real-time threat detection and continuous configuration audits across your entire cloud infrastructure, all in a unified view for seamless collaboration and faster remediation. Powered by observability data, security teams can determine the impact of a threat quickly by tracing the full attack flow and identify the resource owner where a vulnerability was triggered.
 
+CSM leverages the Datadog Agent and platform-wide cloud integrations.
+
 CSM includes:
 
-- [**Threats**][1]: Monitors file and process activity across your environment to detect threats to your infrastructure, like AWS EC2 instances, and workloads, like Kubernetes clusters, in real time at the kernel level. Cloud Workload Security uses the unified Datadog Agent, so if you're already using Datadog to monitor your environment, there's no need to provision additional resources.
-- [**Misconfigurations**][2]: Tracks the security hygiene and compliance posture of your production environment, can automate audit evidence collection, and catch misconfigurations that leave your organization vulnerable to attacks. See security posture scores across your infrastructure and trace each score back to the applicable benchmark or framework criteria.
-- **Vulnerabilities**: 
-- **Identities**:
+- [**Threats**][1]: Monitors file, network, and process activity across your environment to detect real-time threats to your infrastructure.
+- [**Misconfigurations**][2]: Tracks the security hygiene and compliance posture of your production environment, automates audit evidence collection, and enables you to remediate misconfigurations that leave your organization vulnerable to attacks.
+- **Vulnerabilities**: Leverages infrastructure observability to detect, prioritize, and manage vulnerabilities in your organization's containers and hosts.
+- **Identities**: Provides in-depth visibility into your organization's AWS IAM risks and enables you to detect and resolve identity risks on an ongoing basis.
 
 {{< img src="security/csm_overview.png" alt="Cloud Security Management in Datadog" width="100%">}}
 
+## Track your organization's health
+
+via the posture and health identity score
+
+Use the posture score to...
+
+For CSM Identities, the health identity score...
+
+**SCREENSHOT HERE**
+
+## Prioritize and remediate important security issues
+
+Use the **Security Inbox** to 
+
+security issues.
+
+Remediate security issues by fixing the underlying issues or by muting the issue.
+
+{{< img src="security/csm/security-inbox.png" alt="The security inbox on the CSM overview shows prioritized issues for remediation" width="100%">}}
+
+## Explore issues in-depth using explorers
+
+Use the Explorers to ...
+
+## Next steps
+
 To get started with CSM, navigate to the [**Security** > **Setup**][3] section in Datadog, which has detailed information for single or multi-configuration, or follow the getting started sections to learn more about each area of the platform.
-
-Important issues
-
-Dashboards
-
-Explorers
 
 ## Further reading
 
