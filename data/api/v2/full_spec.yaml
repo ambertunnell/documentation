@@ -2621,6 +2621,7 @@ components:
           type: string
       type: object
     CloudConfigurationComplianceRuleOptions:
+      additionalProperties: {}
       description: 'Options for cloud_configuration rules.
 
         Fields `resourceType` and `regoRule` are mandatory when managing custom `cloud_configuration`
@@ -2692,6 +2693,16 @@ components:
       description: How to generate compliance signals. Useful for cloud_configuration
         rules only.
       properties:
+        defaultActivationStatus:
+          description: The default activation status.
+          nullable: true
+          type: boolean
+        defaultGroupByFields:
+          description: The default group by fields.
+          items:
+            type: string
+          nullable: true
+          type: array
         userActivationStatus:
           description: Whether signals will be sent.
           nullable: true
@@ -13095,6 +13106,7 @@ components:
       - data
       type: object
     SecurityMonitoringSignalAttributes:
+      additionalProperties: {}
       description: 'The object containing all signal attributes and their
 
         associated values.'
@@ -13212,6 +13224,21 @@ components:
           format: int32
           maximum: 1000
           type: integer
+      type: object
+    SecurityMonitoringSignalMetadataType:
+      default: signal_metadata
+      description: The type of event.
+      enum:
+      - signal_metadata
+      example: signal_metadata
+      type: string
+      x-enum-varnames:
+      - SIGNAL_METADATA
+    SecurityMonitoringSignalResponse:
+      description: Security Signal response data object.
+      properties:
+        data:
+          $ref: '#/components/schemas/SecurityMonitoringSignal'
       type: object
     SecurityMonitoringSignalRuleCreatePayload:
       description: Create a new signal correlation rule.
@@ -13381,7 +13408,7 @@ components:
         aggregation:
           $ref: '#/components/schemas/SecurityMonitoringRuleQueryAggregation'
         correlatedByFields:
-          description: Fields to group by.
+          description: Fields to correlate by.
           items:
             description: Field.
             type: string
@@ -13395,6 +13422,18 @@ components:
           description: Default Rule ID to match on signals.
           example: d3f-ru1-e1d
           type: string
+        distinctFields:
+          description: Field for which the cardinality is measured. Sent as an array.
+          items:
+            description: Field.
+            type: string
+          type: array
+        groupByFields:
+          description: Fields to group by.
+          items:
+            description: Field.
+            type: string
+          type: array
         metrics:
           description: Group of target fields to aggregate over.
           items:
@@ -13447,6 +13486,10 @@ components:
       properties:
         attributes:
           $ref: '#/components/schemas/SecurityMonitoringSignalStateUpdateAttributes'
+        id:
+          description: The unique ID of the security signal.
+        type:
+          $ref: '#/components/schemas/SecurityMonitoringSignalMetadataType'
       required:
       - attributes
       type: object
@@ -13497,6 +13540,11 @@ components:
       properties:
         attributes:
           $ref: '#/components/schemas/SecurityMonitoringSignalTriageAttributes'
+        id:
+          description: The unique ID of the security signal.
+          type: string
+        type:
+          $ref: '#/components/schemas/SecurityMonitoringSignalMetadataType'
       type: object
     SecurityMonitoringSignalTriageUpdateResponse:
       description: The response returned after all triage operations, containing the
@@ -13672,8 +13720,6 @@ components:
           description: Query to run on logs.
           example: a > 3
           type: string
-      required:
-      - query
       type: object
     SecurityMonitoringStandardRuleResponse:
       description: Rule.
@@ -13753,6 +13799,11 @@ components:
       properties:
         handle:
           description: The handle for this user account.
+          type: string
+        icon:
+          description: Gravatar icon associated to the user.
+          example: /path/to/matching/gravatar/icon
+          readOnly: true
           type: string
         id:
           description: Numerical ID assigned by Datadog to this user account.
@@ -26038,7 +26089,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/SecurityMonitoringSignal'
+                $ref: '#/components/schemas/SecurityMonitoringSignalResponse'
           description: OK
         '404':
           $ref: '#/components/responses/NotFoundResponse'
